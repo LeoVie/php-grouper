@@ -1,0 +1,15 @@
+parameters:
+# nothing to declare
+
+services:
+  _defaults:
+    autowire: true
+
+  LeoVie\PhpGrouper\:
+    resource: '../src/'
+    exclude:
+      - '../src/DependencyInjection/'
+      - '../src/PhpTokenNormalizeBundle.php'
+
+  LeoVie\PhpGrouper\Service\Grouper:
+    public: true
