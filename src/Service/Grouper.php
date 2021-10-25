@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace LeoVie\PhpGrouper\Service;
 
 use LeoVie\PhpGrouper\Model\GroupIdentifiable;
-use LeoVie\PhpGrouper\Sort\GroupIdentifiableSorter;
 
 class Grouper
 {
