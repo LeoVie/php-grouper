@@ -9,64 +9,46 @@ use LeoVie\PhpGrouper\Sort\GroupIdentifiableSorter;
 
 class Grouper
 {
-    public function __construct(private GroupIdentifiableSorter $groupIdentifiableSorter)
-    {}
+    /**
+     * @param GroupIdentifiable[] $groupIdentifiables
+     *
+     * @return array<GroupIdentifiable[]>
+     */
+    public function groupByGroupID(array $groupIdentifiables): array
+    {
+        return array_values(
+            $this->groupByCallback(
+                $groupIdentifiables,
+                fn(GroupIdentifiable $a, GroupIdentifiable $b): bool => $a !== $b && $a->groupID() === $b->groupID()
+            )
+        );
+    }
 
     /**
      * @param GroupIdentifiable[] $groupIdentifiables
      *
      * @return array<GroupIdentifiable[]>
      */
-    public function group(array $groupIdentifiables): array
+    public function groupByCallback(array $groupIdentifiables, callable $callback): array
     {
-        if (empty($groupIdentifiables)) {
-            return [];
-        }
+        $grouped = [];
 
-        $result = [];
-        $last = null;
-
-        $sorted = $this->groupIdentifiableSorter->sort($groupIdentifiables);
-
-        $group = $this->newGroup();
-
-        foreach ($sorted as $i => $identity) {
-            $s = $identity->groupID();
-
-            $isNotFirst = $i > 0;
-            $notSameIdentityAsLast = $s !== $last;
-
-            if ($isNotFirst && $notSameIdentityAsLast) {
-                $result = $this->addGroupToResult($group, $result);
-                $group = $this->newGroup();
+        foreach ($groupIdentifiables as $a) {
+            if (array_key_exists($a->groupID(), $grouped) && in_array($a, $grouped[$a->groupID()])) {
+                continue;
             }
 
-            $group[] = $identity;
+            if (!array_key_exists($a->groupID(), $grouped)) {
+                $grouped[$a->groupID()] = [$a];
+            }
 
-            $last = $s;
+            foreach ($groupIdentifiables as $b) {
+                if ($callback($a, $b)) {
+                    $grouped[$a->groupID()][] = $b;
+                }
+            }
         }
 
-        return $this->addGroupToResult($group, $result);
-    }
-
-    /**
-     * @param GroupIdentifiable[] $group
-     * @param array<GroupIdentifiable[]> $result
-     *
-     * @return array<GroupIdentifiable[]>
-     */
-    private function addGroupToResult(array $group, array $result): array
-    {
-        $result[] = $group;
-
-        return $result;
-    }
-
-    /**
-     * @return GroupIdentifiable[]
-     */
-    private function newGroup(): array
-    {
-        return [];
+        return $grouped;
     }
 }
