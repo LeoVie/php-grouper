@@ -9,7 +9,7 @@ services:
     resource: '../src/'
     exclude:
       - '../src/DependencyInjection/'
-      - '../src/PhpTokenNormalizeBundle.php'
+      - '../src/PhpGrouperBundle.php'
 
   LeoVie\PhpGrouper\Service\Grouper:
     public: true
