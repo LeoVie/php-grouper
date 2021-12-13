@@ -23,7 +23,9 @@
         "symfony/dependency-injection": "^5.3",
         "symfony/config": "^5.3",
         "symfony/yaml": "^5.3",
-        "symfony/http-kernel": "^5.3"
+        "symfony/http-kernel": "^5.3",
+        "amphp/parallel": "^1.4",
+        "opis/closure": "^3.6"
     },
     "require-dev": {
         "infection/infection": "^0.25.3",
