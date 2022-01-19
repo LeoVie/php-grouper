@@ -28,7 +28,7 @@ class Grouper
      *
      * @return array<GroupIdentifiable[]>
      */
-    public function groupByCallback(array $groupIdentifiables, callable $callback): array
+    public function groupByCallback(iterable $groupIdentifiables, callable $callback): array
     {
         $grouped = [];
 
