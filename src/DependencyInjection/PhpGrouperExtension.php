@@ -11,13 +11,15 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class PhpGrouperExtension extends Extension
 {
+    const CONFIG_DIR = __DIR__ . '/../../config/';
+
     /**
      * @param mixed[] $configs
      * @throws \Exception
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $configDir = new FileLocator(__DIR__ . '/../../config/');
+        $configDir = new FileLocator(self::CONFIG_DIR);
 
         $loader = new YamlFileLoader($container, $configDir);
         $loader->load('services.yaml');
