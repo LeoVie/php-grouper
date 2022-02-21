@@ -24,7 +24,7 @@ class Grouper
     }
 
     /**
-     * @param GroupIdentifiable[] $groupIdentifiables
+     * @param iterable<GroupIdentifiable> $groupIdentifiables
      *
      * @return array<GroupIdentifiable[]>
      */
