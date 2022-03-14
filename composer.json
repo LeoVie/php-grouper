@@ -1,7 +1,7 @@
 {
     "name": "leovie/php-grouper",
     "description": "Group similar objects in php.",
-    "license": "proprietary",
+    "license": "BSD-3-Clause",
     "type": "symfony-bundle",
     "autoload": {
         "psr-4": {
