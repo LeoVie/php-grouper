@@ -12,7 +12,12 @@
     "text": "build/logs/infection.log"
   },
   "mutators": {
-    "@default": true
+    "@default": true,
+    "MethodCallRemoval": {
+      "ignore": [
+        "LeoVie\\PhpGrouper\\DependencyInjection\\PhpGrouperExtension::load"
+      ]
+    }
   },
   "tmpDir": "../cache"
 }
