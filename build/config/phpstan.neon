@@ -13,4 +13,3 @@ parameters:
             - %currentWorkingDirectory%/src/DependencyInjection/*
     ignoreErrors:
         - '#Method LeoVie\\PhpGrouper\\Tests.+ has parameter .+ with no value type specified in iterable type .+#'
-        - '#Method LeoVie\\PhpGrouper\\Tests.+ return type has no value type specified in iterable type .+#'

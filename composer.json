@@ -23,7 +23,8 @@
         "symfony/dependency-injection": "^5.3",
         "symfony/config": "^5.3",
         "symfony/yaml": "^5.3",
-        "symfony/http-kernel": "^5.3"
+        "symfony/http-kernel": "^5.3",
+        "roave/security-advisories": "dev-latest"
     },
     "require-dev": {
         "infection/infection": "^0.25.3",
@@ -34,7 +35,7 @@
     },
     "scripts": {
         "psalm": "psalm -c build/config/psalm.xml --show-info=true",
-        "phpunit": "simple-phpunit -c build/config/phpunit.xml",
+        "phpunit": "phpunit -c build/config/phpunit.xml",
         "infection": "infection --only-covered --configuration=build/config/infection.json --min-msi=100 --min-covered-msi=100 --coverage=../coverage --threads=4 --test-framework-options='--no-coverage'",
         "infection-after-phpunit": "@infection --skip-initial-tests",
         "test": [
