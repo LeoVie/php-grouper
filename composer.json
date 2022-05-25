@@ -23,15 +23,15 @@
         "symfony/dependency-injection": "^6.0",
         "symfony/config": "^6.0",
         "symfony/yaml": "^6.0",
-        "symfony/http-kernel": "^6.0",
-        "roave/security-advisories": "dev-latest"
+        "symfony/http-kernel": "^6.0"
     },
     "require-dev": {
         "infection/infection": "^0.26",
         "phpunit/phpunit": "^9.5",
         "vimeo/psalm": "^4.10",
         "psalm/plugin-symfony": "^3.0",
-        "symfony/phpunit-bridge": "^6.0"
+        "symfony/phpunit-bridge": "^6.0",
+        "roave/security-advisories": "dev-latest"
     },
     "scripts": {
         "psalm": "psalm -c build/config/psalm.xml --show-info=true",
