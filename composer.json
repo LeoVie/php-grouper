@@ -29,7 +29,7 @@
         "infection/infection": "^0.26",
         "phpunit/phpunit": "^9.5",
         "vimeo/psalm": "^4.10",
-        "psalm/plugin-symfony": "^3.0",
+        "psalm/plugin-symfony": "^4.0",
         "symfony/phpunit-bridge": "^6.0",
         "roave/security-advisories": "dev-latest"
     },
